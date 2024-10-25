@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Herbal Garden - Overview</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>
+        /* Optional: Add styles to control iframe size and responsiveness */
+        .iframe-container {
+            position: relative;
+            width: 80%; /* Adjust width here */
+            max-width: 1200px; /* Optional: Set maximum width */
+            padding-top: 56.25%; /* 16:9 aspect ratio */
+            margin: 30px auto;
+        }
+        .iframe-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        /* Add some styles for the sections */
+        .section {
+            padding: 20px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .plants-grid {
+            display: flex;
+            overflow: hidden;
+            gap: 20px;
+            position: relative;
+            scroll-behavior: smooth;
+            width: 100%;
+        }
+        .plant-item {
+            flex: 1 0 25%;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+            min-width: 200px; /* Ensure a minimum width for each item */
+        }
+        .plant-item img {
+            max-width: 100%;
+            height: auto;
+        }
+        .scroll-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #ddd;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 1;
+            border-radius: 5px;
+        }
+        .scroll-left {
+            left: 0;
+        }
+        .scroll-right {
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#virtual-garden">Virtual Garden</a></li>
+                <li><a href="#featured-plants">Plants</a></li>
+                <li><a href="#ayurveda">Ayurveda</a></li>
+                <li><a href="#yoga-naturopathy">Yoga & Naturopathy</a></li>
+                <li><a href="#unani">Unani</a></li>
+                <li><a href="#siddha">Siddha</a></li>
+                <li><a href="#homeopathy">Homeopathy</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="home" class="hero">
+        <h1>Welcome to the Virtual Herbal Garden</h1>
+        <p>Explore the diverse range of medicinal plants used in AYUSH</p>
+        <button onclick="scrollToSection('featured-plants')">Discover More</button>
+    </div>
+
+    <!-- Virtual Garden Section -->
+    <div id="virtual-garden" class="iframe-container">
+        <iframe src="https://momento360.com/e/u/175edf695832481aa80270eea88dbfb8?utm_campaign=embed&utm_source=other&heading=224.2&pitch=-18.6&field-of-view=75&size=medium"
+        frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <!-- Featured Plants Section -->
+    <div id="featured-plants" class="section">
+        <h2>Featured Plants</h2>
+        <div class="plants-grid" id="featuredPlantsGrid">
+            <button class="scroll-button scroll-left" onclick="scrollLeft('featuredPlantsGrid')">&#9664;</button>
+            <div class="plant-item">
+                <img src="{{ url_for('static', filename='images/tulsi.jpg') }}" alt="Tulsi">
+                <h3>Tulsi (Holy Basil)</h3>
+                <p>Known for its purifying and healing properties in Ayurveda.</p>
+            </div>
+            <div class="plant-item">
+                <img src="{{ url_for('static', filename='images/aloe_vera.jpg') }}" alt="Aloe Vera">
+                <h3>Aloe Vera</h3>
+                <p>Famous for its soothing and rejuvenating effects on the skin.</p>
+            </div>
+            <div class="plant-item">
+                <img src="{{ url_for('static', filename='images/neem.jpg') }}" alt="Neem">
+                <h3>Neem</h3>
+                <p>A powerful herb used for its anti-bacterial and detoxifying properties.</p>
+            </div>
+            <div class="plant-item">
+                <img src="{{ url_for('static', filename='images/ashwagandha.jpg') }}" alt="Ashwagandha">
+                <h3>Ashwagandha</h3>
+                <p>A herb known for its adaptogenic properties and stress relief.</p>
+            </div>
+            <button class="scroll-button scroll-right" onclick="scrollRight('featuredPlantsGrid')">&#9654;</button>
+        </div>
+    </div>
+
+    <!-- Ayurveda Section -->
+<div id="ayurveda" class="section">
+    <h2>Ayurveda</h2>
+    <div class="plants-grid" id="ayurvedaGrid">
+        <button class="scroll-button scroll-left" onclick="scrollLeft('ayurvedaGrid')">&#9664;</button>
+        <div class="plant-item">
+            <img src="{{ url_for('static', filename='images/ashwagandha.jpg') }}" alt="Ashwagandha">
+            <h3>Ashwagandha (Withania somnifera)</h3>
+            <p><strong>Diseases Treated:</strong> Stress, anxiety, fatigue, adrenal insufficiency, insomnia.</p>
+            <p><strong>Anti-Aging Effects:</strong> Ashwagandha lowers oxidative stress and inflammation, which influences biological aging. It also improves cognitive function and normalizes energy levels.</p>
+            <p><strong>Biomarkers:</strong> Lowers cortisol levels (the stress hormone) and inflammatory cytokines like TNF-alpha and IL-6.</p>
+        </div>
+        <div class="plant-item">
+            <img src="{{ url_for('static', filename='images/tulsi.jpg') }}" alt="Tulsi">
+            <h3>Tulsi (Ocimum sanctum)</h3>
+            <p><strong>Diseases Treated:</strong> Respiratory infections, stress, inflammation, digestion.</p>
+            <p><strong>Anti-Aging Effects:</strong> Antioxidants in Tulsi help fight oxidative stress and inflammation responsible for aging.</p>
+            <p><strong>Biomarkers:</strong> Reduces oxidative stress biomarkers like malondialdehyde and inflammation biomarkers like CRP and IL-6.</p>
+        </div>
+        <div class="plant-item">
+            <img src="{{ url_for('static', filename='images/neem.jpg') }}" alt="Neem">
+            <h3>Neem (Azadirachta indica)</h3>
+            <p><strong>Diseases Treated:</strong> Acne, eczema, diabetes, bacterial, and fungal infections.</p>
+            <p><strong>Anti-Aging Effects:</strong> The antioxidant and anti-inflammatory properties of neem provide protection against premature skin aging and support healthy aging.</p>
+            <p><strong>Biomarkers:</strong> Decreases markers of oxidative stress and inflammatory cytokines while potentially improving collagen levels, which are markers for skin health.</p>
+        </div>
+        <div class="plant-item">
+            <img src="{{ url_for('static', filename='images/turmeric.jpg') }}" alt="Turmeric">
+            <h3>Turmeric (Curcuma longa)</h3>
+            <p><strong>Diseases Treated:</strong> Arthritis, digestive disorders, cardiovascular diseases, cancer.</p>
+            <p><strong>Anti-Aging Effects:</strong> Turmeric contains a bioactive element called curcumin that helps to reduce DNA damage due to its potent antioxidant and anti-inflammatory properties.</p>
+            <p><strong>Biomarkers:</strong> Lowers levels of oxidative stress markers, such as 8-OHdG, and inflammatory markers like IL-1 and IL-6.</p>
+        </div>
+        <button class="scroll-button scroll-right" onclick="scrollRight('ayurvedaGrid')">&#9654;</button>
+    </div>
+</div>
+
+
+    <!-- Yoga & Naturopathy Section -->
+    <div id="yoga-naturopathy" class="section">
+        <h2>Yoga & Naturopathy Plants</h2>
+        <div class="plants-grid" id="yogaNaturopathyGrid">
+            <button class="scroll-button scroll-left" onclick="scrollLeft('yogaNaturopathyGrid')">&#9664;</button>
+            <div class="plant-item">
+                <img src="{{ url_for('static', filename='images/ginger.jpg') }}" alt="Ginger">
+                <h3>Ginger (Zingiber officinale)</h3>
+                <p><strong>Diseases to be Treated:</strong> Nausea, indigestion, arthritis, and respiration problems.</p>
+                <p><strong>Anti-Aging Effects:</strong> Antioxidant and anti-inflammatory properties reduce cellular damage and inflammation.</p>
+                <p><strong>Biomarkers:</strong> Reduces markers of oxidative stress, like malondialdehyde, and inflammation, such as CRP.</p>
+            </div>
+            <div class="plant-item">
+                <img src="{{ url_for('static', filename='images/coriander.jpg') }}" alt="Coriander">
+                <h3>Coriander (Coriandrum sativum)</h3>
+                <p><strong>Diseases to be Treated:</strong> Digestive disorders, high cholesterol, and infections.</p>
+                <p><strong>Anti-Aging Effects:</strong> Antioxidant action promotes healthy cell protection and maintains good health.</p>
+                <p><strong>Biomarkers:</strong> Reduces markers of oxidative stress, favoring cholesterol levels.</p>
+            </div>
+            <div class="plant-item">
+                <img src="{{ url_for('static', filename='images/fennel.jpg') }}" alt="Fennel">
+                <h3>Fennel (Foeniculum vulgare)</h3>
+                <p><strong>Diseases to be Treated:</strong> Digestive issues, respiratory problems, and inflammation.</p>
+                <p><strong>Anti-Aging Effects:</strong> Antioxidant properties help combat oxidative stress.</p>
+                <p><strong>Biomarkers:</strong> Reduces oxidative stress markers and supports digestive health.</p>
+            </div>
+            <div class="plant-item">
+                <img src="{{ url_for('static', filename='images/lavender.jpg') }}" alt="Lavender">
+                <h3>Lavender (Lavandula angustifolia)</h3>
+                <p><strong>Diseases Treated:</strong> Anxiety, insomnia, and depression.</p>
+                <p><strong>Anti-Aging Effects:</strong> Relaxation effects reduce stress and improve sleep, indirectly supporting healthy aging.</p>
+                <p><strong>Biomarkers:</strong> Reduces cortisol levels and promotes better sleep quality.</p>
+            </div>
+            <button class="scroll-button scroll-right" onclick="scrollRight('yogaNaturopathyGrid')">&#9654;</button>
+        </div>
+    </div>
+
+    <!-- Unani Section -->
+<div id="unani" class="section">
+    <h2>Unani</h2>
+    <div class="plants-grid" id="unaniGrid">
+        <button class="scroll-button scroll-left" onclick="scrollLeft('unaniGrid')">&#9664;</button>
+        <div class="plant-item">
+            <img src="{{ url_for('static', filename='images/senna.jpg') }}" alt="Senna">
+            <h3>Senna (Senna alexandrina)</h3>
+            <p><strong>Diseases Treated:</strong> Constipation, digestive disorders.</p>
+            <p><strong>Anti-Aging Effects:</strong> Senna promotes normal bowel movement, which is an integral part of detoxification and overall health.</p>
+            <p><strong>Biomarkers:</strong> Promotes digestive enzyme activity and reduces biomarkers of constipation.</p>
+        </div>
+        <div class="plant-item">
+            <img src="{{ url_for('static', filename='images/psyllium.jpg') }}" alt="Psyllium">
+            <h3>Psyllium (Plantago ovata)</h3>
+            <p><strong>Diseases Treated:</strong> Constipation, cholesterol management, blood sugar control.</p>
+            <p><strong>Anti-Aging Effects:</strong> Psyllium helps with its fiber content in digestion and the regulation of bowels, hence contributing to overall health.</p>
+            <p><strong>Biomarkers:</strong> Improves cholesterol and blood sugar markers.</p>
+        </div>
+        <div class="plant-item">
+            <img src="{{ url_for('static', filename='images/hibiscus.jpg') }}" alt="Hibiscus">
+            <h3>Hibiscus (Hibiscus sabdariffa)</h3>
+            <p><strong>Diseases Treated:</strong> Hypertension, digestive disorders, infections.</p>
+            <p><strong>Anti-Aging Effects:</strong> Antioxidant properties of hibiscus help in reducing oxidative stress and support cardiovascular health.</p>
+            <p><strong>Biomarkers:</strong> Blood pressure reduction and reduction in markers of oxidative stress.</p>
+        </div>
+        <div class="plant-item">
+            <img src="{{ url_for('static', filename='images/liquorice.jpg') }}" alt="Liquorice">
+            <h3>Liquorice (Glycyrrhiza glabra)</h3>
+            <p><strong>Diseases Treated:</strong> Digestive problems, respiratory conditions, adrenal fatigue.</p>
+            <p><strong>Anti-Aging Effects:</strong> The anti-inflammatory, soothing action of liquorice contributes to general health and skin vitality.</p>
+            <p><strong>Biomarkers:</strong> Inflammation markers are reduced, while the adrenals are supported.</p>
+        </div>
+        <button class="scroll-button scroll-right" onclick="scrollRight('unaniGrid')">&#9654;</button>
+    </div>
+</div>
+
+<!-- Siddha Section -->
+<div id="siddha" class="section">
+    <h2>Siddha</h2>
+    <div class="plants-grid" id="siddhaGrid">
+        <button class="scroll-button scroll-left" onclick="scrollLeft('siddhaGrid')">&#9664;</button>
+        <div class="plant-item">
+            <img src="{{ url_for('static', filename='images/andrographis.jpg') }}" alt="Andrographis">
+            <h3>Andrographis (Andrographis paniculata)</h3>
+            <p><strong>Diseases Treated:</strong> Respiratory infections, immune disorders, inflammation.</p>
+            <p><strong>Anti-Aging Effects:</strong> Andrographis improves immune function and reduces inflammation and may have a positive impact on overall health.</p>
+            <p><strong>Biomarkers:</strong> Increases immune markers, such as lymphocyte count, and reduces inflammatory cytokines.</p>
+        </div>
+        <div class="plant-item">
+            <img src="{{ url_for('static', filename='images/arjuna.jpg') }}" alt="Arjuna">
+            <h3>Arjuna (Terminalia arjuna)</h3>
+            <p><strong>Diseases Treated:</strong> Heart disease, hypertension, cholesterol problems.</p>
+            <p><strong>Anti-Aging Effects:</strong> Arjuna maintains cardiovascular health and diminishes oxidative stress, which is an essential factor in healthy aging.</p>
+            <p><strong>Biomarkers:</strong> Reduces blood pressure and cholesterol levels; diminishes markers of oxidative stress.</p>
+        </div>
+        <div class="plant-item">
+            <img src="{{ url_for('static', filename='images/kadukkai.jpg') }}" alt="Kadukkai">
+            <h3>Kadukkai (Terminalia chebula)</h3>
+            <p><strong>Diseases Treated:</strong> Digestive disorders, detoxification, metabolic disorders.</p>
+            <p><strong>Anti-Aging Effects:</strong> Kadukkai aids in detoxification and digestion and thus generally leads to vitality.</p>
+            <p><strong>Biomarkers:</strong> Improvement in digestive enzymatic activity, reduction in oxidative stress markers.</p>
+        </div>
+        <div class="plant-item">
+            <img src="{{ url_for('static', filename='images/pippali.jpg') }}" alt="Pippali">
+            <h3>Pippali (Piper longum)</h3>
+            <p><strong>Diseases Treated:</strong> Respiratory disorders, digestive disorders.</p>
+            <p><strong>Anti-Aging Effects:</strong> Improved digestion and hence better absorption aids in the general state of health and assimilation of various nutrients.</p>
+            <p><strong>Biomarkers:</strong> Enhances the bioavailability of other nutrients as well as reduces oxidative stress.</p>
+        </div>
+        <button class="scroll-button scroll-right" onclick="scrollRight('siddhaGrid')">&#9654;</button>
+    </div>
+</div>
+
+<!-- Homeopathy Section -->
+<div id="homeopathy" class="section">
+    <h2>Homeopathy</h2>
+    <div class="plants-grid" id="homeopathyGrid">
+        <button class="scroll-button scroll-left" onclick="scrollLeft('homeopathyGrid')">&#9664;</button>
+        <div class="plant-item">
+            <img src="{{ url_for('static', filename='images/echinacea.jpg') }}" alt="Echinacea">
+            <h3>Echinacea (Echinacea purpurea)</h3>
+            <p><strong>Diseases Treated:</strong> Immune system, respiratory infections.</p>
+            <p><strong>Anti-Aging Effects:</strong> Improvement in immune competency and reduction of infection load to enhance overall health.</p>
+            <p><strong>Biomarkers:</strong> Increases white blood cell count—immune markers and lowers inflammatory cytokines level.</p>
+        </div>
+        <div class="plant-item">
+            <img src="{{ url_for('static', filename='images/aconite.jpg') }}" alt="Aconite">
+            <h3>Aconite (Aconitum napellus)</h3>
+            <p><strong>Diseases Treated:</strong> Acute stress, fever, anxiety.</p>
+            <p><strong>Anti-Aging Effects:</strong> Relieves acute stress and anxiety to help promote general health and well-being.</p>
+            <p><strong>Biomarkers:</strong> Lowers biomarkers of stress through supporting adrenal function.</p>
+        </div>
+        <div class="plant-item">
+            <img src="{{ url_for('static', filename='images/belladonna.jpg') }}" alt="Belladonna">
+            <h3>Belladonna (Atropa belladonna)</h3>
+            <p><strong>Diseases Treated:</strong> High fever, inflammation, spasm.</p>
+            <p><strong>Anti-Aging Effects:</strong> Lowers acute inflammation and fever, which may have a positive impact on overall health.</p>
+            <p><strong>Biomarkers:</strong> Biomarkers of inflammation and biomarkers associated with fever can be lowered.</p>
+        </div>
+        <div class="plant-item">
+            <img src="{{ url_for('static', filename='images/arnica.jpg') }}" alt="Arnica">
+            <h3>Arnica (Arnica montana)</h3>
+            <p><strong>Diseases Treated:</strong> Bruises, sprains, muscle soreness.</p>
+            <p><strong>Anti-Aging Effects:</strong> Reduces inflammation and thus promotes healing, helping to keep the body functioning and vital.</p>
+            <p><strong>Biomarkers:</strong> Inflammation markers are reduced and tissue repair is enhanced.</p>
+        </div>
+        <button class="scroll-button scroll-right" onclick="scrollRight('homeopathyGrid')">&#9654;</button>
+    </div>
+</div>
+
+
+
+    <footer>
+        <p>&copy; 2024 Acrobat Aztecs Virtual Herbal Garden. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function scrollLeft(gridId) {
+            const grid = document.getElementById(gridId);
+            grid.scrollLeft -= 300; // Adjust this value as needed
+        }
+
+        function scrollRight(gridId) {
+            const grid = document.getElementById(gridId);
+            grid.scrollLeft += 300; // Adjust this value as needed
+        }
+
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            section.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
+
